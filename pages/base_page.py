@@ -18,9 +18,12 @@ class Page:
     def find_element(self, *locator):
         # logger.info(f'Searching for element {locator}...') # LINE NEEDED WHEN LOOGING INFO
         return self.driver.find_element(*locator) # besides finding an element we need to return it as well
+        # return self.wait.until(EC.presence_of_element_located(locator))
 
     def find_elements(self, *locator):
         return self.driver.find_elements(*locator) # besides finding an element we need to return it as well
+        # return self.wait.until(EC.presence_of_all_elements_located(locator))
+
 
     def click(self, *locator): # in order to click on something we need to know the locator
         # logger.info(f'Clicking element {locator}...') # LINE NEEDED WHEN LOOGING INFO

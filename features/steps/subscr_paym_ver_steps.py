@@ -16,20 +16,26 @@ def input_email_and_password(context):
 
 @when('Click on Continue button')
 def click_continue_btn(context):
-        # sleep(4)
+    sleep(5)
     context.app.sign_in_page.click_continue_btn()
     # context.driver.find_element(By.CSS_SELECTOR......) # IF I work without 'pages'
 
 
-@when('Click on settings option')
+@when('Click on Main Menu')
+def click_main_menu_btn(context):
+    context.app.main_page.click_main_menu_btn()
+
+
+@when('Click on profile icon')
 def click_settings_option(context):
     # context.driver.execute_script("window.scrollBy(0,2000)", "")
+    # sleep(3)
     context.app.main_page.click_settings_option()
-    sleep(3)
 
 
 @when('Click on Subscription & payments option')
 def click_subcr_and_payment_btn(context):
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
     context.app.settings_page.click_subcr_and_payment_btn()
     # sleep(5)
 
