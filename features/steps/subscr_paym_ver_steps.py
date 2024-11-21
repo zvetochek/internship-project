@@ -10,7 +10,7 @@ def open_reelly(context):
 
 @when('Enter email and password')
 def input_email_and_password(context):
-    sleep(3)
+    # sleep(3)
     context.app.sign_in_page.input_email_and_password()
 
 
@@ -18,7 +18,7 @@ def input_email_and_password(context):
 def click_continue_btn(context):
     sleep(5)
     context.app.sign_in_page.click_continue_btn()
-    # context.driver.find_element(By.CSS_SELECTOR......) # IF I work without 'pages'
+    # context.driver.find_element(By.CSS_SELECTOR......) # IF I write a code without 'pages'
 
 
 @when('Click on Main Menu')

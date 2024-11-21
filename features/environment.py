@@ -45,48 +45,48 @@ def browser_init(context, scenario_name):
     # )
 
     ## BROWSERSTACK ###
-    # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-    # bs_user = 'larisa_t3lePz'
-    # bs_key = 'MNfpB7RR7gXKZXYPLsyp'
-    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    ## Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings ##
+    bs_user = 'larisa_t3lePz'
+    bs_key = 'MNfpB7RR7gXKZXYPLsyp'
+    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+
+    options = Options()
+    bstack_options = {
+    # "os": "Windows",
+    # "osVersion" : "11",
+    # 'browserName': 'chrome',
+    # }
+
+    "platformName": "Android",
+    "deviceName": "Samsung Galaxy S22 Ultra",
+    'browserName': 'chrome',
+    'interactiveDebugging': True,
+    'sessionName': scenario_name
+    }
     #
-    # options = Options()
-    # bstack_options = {
-    # # "os": "Windows",
-    # # "osVersion" : "11",
-    # # 'browserName': 'chrome',
+    # # Mac
+    # #     "os": "OS X",
+    # #     "osVersion" : "ventura",
+    # #     'browserName': 'chrome',
+    # #     'sessionName': scenario_name
     # # }
     #
-    # "platformName": "Android",
-    # "deviceName": "Samsung Galaxy S22 Ultra",
-    # 'browserName': 'chrome',
-    # 'interactiveDebugging': True,
-    # 'sessionName': scenario_name
-    # }
-    # #
-    # # # Mac
-    # # #     "os": "OS X",
-    # # #     "osVersion" : "ventura",
-    # # #     'browserName': 'chrome',
-    # # #     'sessionName': scenario_name
-    # # # }
-    # #
-    # #  # Mac: "os": "OS X", "osVersion" : "ventura", 'browserName': 'chrome' OR 'safari', 'sessionName': scenario_name
-    # #
-    # options.set_capability('bstack:options', bstack_options)
-    # context.driver = webdriver.Remote(command_executor=url, options=options)
+    #  # Mac: "os": "OS X", "osVersion" : "ventura", 'browserName': 'chrome' OR 'safari', 'sessionName': scenario_name
+    #
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
 
     ### MOBILE-EMULATION ###
-    mobile_emulation = {
-        "deviceName": "Nexus 5" # "Pixel 2"  # Choose a mobile device
-    }
-
-    options = webdriver.ChromeOptions()
-    options.add_experimental_option("mobileEmulation", mobile_emulation)
-
-    # Initialize WebDriver with mobile emulation
-    service = Service("./chromedriver.exe")
-    context.driver = webdriver.Chrome(service=service, options=options)
+    # mobile_emulation = {
+    #     "deviceName": "Nexus 5" # "Pixel 2"  # Choose a mobile device
+    # }
+    #
+    # options = webdriver.ChromeOptions()
+    # options.add_experimental_option("mobileEmulation", mobile_emulation)
+    #
+    # # Initialize WebDriver with mobile emulation
+    # service = Service("./chromedriver.exe")
+    # context.driver = webdriver.Chrome(service=service, options=options)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
