@@ -1,6 +1,7 @@
 from pages.base_page import Page
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
 from time import sleep
 
 class OffPlanPage(Page):
@@ -12,6 +13,14 @@ class OffPlanPage(Page):
     APPLY_FILTER_BTN = (By.CSS_SELECTOR, "a[wized='applyFilterButton']")
     CARDS_PROPERTY = (By.CSS_SELECTOR, "a[wized='cardOfProperty']")
     OFF_PLAN_VALUE = (By.CSS_SELECTOR, "div[class='price-value']")
+    SALE_STATUS_DROPDOWN = (By.CSS_SELECTOR, "#Location-2")
+    OUT_OF_STOCK_DROPDOWN = (By.CSS_SELECTOR, "option[value='Out of stock']")
+    OUT_OF_STOCK_CARDS = (By.CSS_SELECTOR, "a[wized='cardOfProperty']")
+    OUT_OT_STOCK_STATUS_ON_CARDS = (By.CSS_SELECTOR, "div[wized='projectStatus'")
+
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.SALES_STATUS_DROPDOWN = None
 
     def click_off_plan(self):
         self.click(*self.OFF_PLAN_BTN)
@@ -25,10 +34,22 @@ class OffPlanPage(Page):
         self.input_text("2000000", *self.TO_BOX_PRICE)
         self.click(*self.APPLY_FILTER_BTN)
 
-
     def verify_price_in_range(self):
         all_cards = self.wait.until(EC.visibility_of_all_elements_located(self.CARDS_PROPERTY))
         for property in all_cards:
             property_price = property.find_element(*self.OFF_PLAN_VALUE)
             amount = property_price.text.replace('AED', '').replace(',', '')
             assert int(amount) in range(1200000, 2000000), f"Price not in Range"
+
+    def out_of_stock_tag(self):
+        # self.select_dropdown_value('Out of stock', *self.SALE_STATUS_DD)
+        dd = self.find_element(*self.SALE_STATUS_DROPDOWN)
+        select = Select(dd)
+        select.select_by_value('Out of stock')
+        sleep(3)
+
+    def verify_out_of_stock_tag(self):
+        all_cards = self.find_elements(*self.OUT_OF_STOCK_CARDS)
+        for card in all_cards:
+            status = card.find_element(*self.OUT_OT_STOCK_STATUS_ON_CARDS)
+            assert status.text == "Out of stock", f"Tag is not 'Out of stock'."

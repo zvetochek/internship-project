@@ -15,3 +15,13 @@ def filter_products_by_price(context):
 @then('Verify the price in all cards is in a given range')
 def verify_price_in_range(context):
     context.app.off_plan_page.verify_price_in_range()
+
+@when('Filter by sale status of “Out of Stocks”')
+# def sales_status_out_of_stocks(context):
+#     context.app.off_plan_page.sales_status_out_of_stocks()
+def out_of_stock_tag(context):
+    context.app.off_plan_page.out_of_stock_tag()
+
+@then('Verify each product contains the Out of Stocks tag')
+def verify_out_of_stock_tag(context):
+    context.app.off_plan_page.verify_out_of_stock_tag()
