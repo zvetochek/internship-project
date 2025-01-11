@@ -17,6 +17,11 @@ class OffPlanPage(Page):
     OUT_OF_STOCK_DROPDOWN = (By.CSS_SELECTOR, "option[value='Out of stock']")
     OUT_OF_STOCK_CARDS = (By.CSS_SELECTOR, "a[wized='cardOfProperty']")
     OUT_OT_STOCK_STATUS_ON_CARDS = (By.CSS_SELECTOR, "div[wized='projectStatus'")
+    FIRST_PRODUCT = (By.CSS_SELECTOR, "a[wized='cardOfProperty']")
+
+    ARCHITECTURE_BTN = (By.ID, 'w-tabs-0-data-w-tab-0')
+    INTERIOR_BTN = (By.ID, 'w-tabs-0-data-w-tab-1')
+    LOBBY_BTN = (By.ID, 'w-tabs-0-data-w-tab-2')
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -53,3 +58,16 @@ class OffPlanPage(Page):
         for card in all_cards:
             status = card.find_element(*self.OUT_OT_STOCK_STATUS_ON_CARDS)
             assert status.text == "Out of stock", f"Tag is not 'Out of stock'."
+
+    def click_first_product(self):
+        self.click(*self.FIRST_PRODUCT)
+
+    def verify_opts_of_visualization(self):
+        self.verify_text('Architecture', *self.ARCHITECTURE_BTN)
+        self.verify_text('Interior', *self.INTERIOR_BTN)
+        self.verify_text('Lobby', *self.LOBBY_BTN)
+
+    def verify_visualiz_opts_clickable(self):
+        self.wait_until_clickable_click(*self.ARCHITECTURE_BTN)
+        self.wait_until_clickable_click(*self.INTERIOR_BTN)
+        self.wait_until_clickable_click(*self.LOBBY_BTN)

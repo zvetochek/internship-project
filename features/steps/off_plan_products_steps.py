@@ -25,3 +25,15 @@ def out_of_stock_tag(context):
 @then('Verify each product contains the Out of Stocks tag')
 def verify_out_of_stock_tag(context):
     context.app.off_plan_page.verify_out_of_stock_tag()
+
+@when('Click on the first product')
+def click_first_product(context):
+    context.app.off_plan_page.click_first_product()
+
+@then('Verify the three options of visualization are “architecture”, “interior”, “lobby”')
+def verify_opts_of_visualization(context):
+    context.app.off_plan_page.verify_opts_of_visualization()
+
+@then('Verify the visualization options are clickable')
+def verify_visualiz_opts_clickable(context):
+    context.app.off_plan_page.verify_visualiz_opts_clickable()

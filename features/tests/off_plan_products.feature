@@ -16,3 +16,11 @@ Feature: Tests for Off-plan page
     Then Verify the right off-plan page opens
     When Filter by sale status of “Out of Stocks”
     Then Verify each product contains the Out of Stocks tag
+
+ Scenario: User can open product detail and see three options of visualization
+   Given Open Reelly page
+   When Log in to the page
+   And Click on “off plan” at the left side menu
+   And Click on the first product
+   Then Verify the three options of visualization are “architecture”, “interior”, “lobby”
+   And Verify the visualization options are clickable
