@@ -16,6 +16,13 @@ def go_to_final_market_page(context):
 def go_to_first_page(context):
     context.app.market_page.go_to_first_page()
 
+@when('Click on Developers filter at the top of the page')
+def click_developers_filter(context):
+    context.app.market_page.click_developers_filter()
+
+@then('Verify all cards have the license tag')
+def verify_cards_have_license_tag(context):
+    context.app.market_page.verify_cards_have_license_tag()
 
 
 
