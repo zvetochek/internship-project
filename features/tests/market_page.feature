@@ -17,3 +17,12 @@ Feature: Market Page Tests
     When Click on Developers filter at the top of the page
     Then Verify all cards have the license tag
 
+  Scenario: User can open market tab and add company option
+    Given Open Reelly page
+    When Log in to the page
+    And Click on “market” at the left side menu
+    Then Verify the Market page opens
+    When Click on “Add company” button
+    Then Verify the "Add company" page opens
+    Then Verify the button “Publish my company” is available
+

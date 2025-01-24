@@ -13,7 +13,8 @@ class MarketPage(Page):
     DEVELOPERS_BTN = (By.CSS_SELECTOR, "div[wized='marketTagDevelopers']")
     MARKET_CARDS_IMAGE = (By.CSS_SELECTOR, "img[wized='marketPageBackgraundPhoto']")
     LICENSE_TAG = (By.CSS_SELECTOR, "div[class='license-block']")
-
+    ADD_COMPANY_BTN = (By.CSS_SELECTOR, "a[class='add-company-button w-inline-block']")
+    PUBLISH_MY_COMPANY_BTN = (By.CSS_SELECTOR, "a[class='publish-button w-button']")
 
     def click_market_menu(self):
         self.click(*self.MARKET_BTN)
@@ -56,4 +57,13 @@ class MarketPage(Page):
         for card in all_cards:
             assert 'License' in card.text, f"No License tag in card."
 
+    def add_company_button(self):
+        self.click(*self.ADD_COMPANY_BTN)
 
+    def verify_add_company_page_opened(self):
+        # self.verify_url('https://soft.reelly.io/presentation-for-the-agency')
+        self.verify_partial_url('presentation-for-the-agency')
+
+    def verify_publish_my_company_btn_available(self):
+        # self.wait_for_visibility_of_element_located(*self.PUBLISH_MY_COMPANY_BTN)
+        self.wait_until_visible(*self.PUBLISH_MY_COMPANY_BTN)

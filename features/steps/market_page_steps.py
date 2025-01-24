@@ -24,6 +24,21 @@ def click_developers_filter(context):
 def verify_cards_have_license_tag(context):
     context.app.market_page.verify_cards_have_license_tag()
 
+@when('Click on “Add company” button')
+def add_company_button(context):
+    context.app.market_page.add_company_button()
+
+@then('Verify the "Add company" page opens')
+def verify_add_company_page_opened(context):
+    context.app.market_page.verify_add_company_page_opened()
+
+@then('Verify the button “Publish my company” is available')
+def verify_publish_my_company_btn_available(context):
+    context.app.market_page.verify_publish_my_company_btn_available()
+
+
+
+
 
 
 
