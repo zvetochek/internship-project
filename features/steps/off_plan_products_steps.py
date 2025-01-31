@@ -37,3 +37,7 @@ def verify_opts_of_visualization(context):
 @then('Verify the visualization options are clickable')
 def verify_visualiz_opts_clickable(context):
     context.app.off_plan_page.verify_visualiz_opts_clickable()
+
+@then('Verify each product on this page contains a title and picture visible')
+def verify_products_have_title_n_picture(context):
+    context.app.off_plan_page.verify_products_have_title_n_picture()

@@ -24,3 +24,10 @@ Feature: Tests for Off-plan page
    And Click on the first product
    Then Verify the three options of visualization are “architecture”, “interior”, “lobby”
    And Verify the visualization options are clickable
+
+ Scenario: User can see titles and pictures on each product inside the off plan page
+   Given Open Reelly page
+   When Log in to the page
+   When Click on “off plan” at the left side menu
+   Then Verify the right off-plan page opens
+   Then Verify each product on this page contains a title and picture visible

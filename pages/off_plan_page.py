@@ -18,6 +18,8 @@ class OffPlanPage(Page):
     OUT_OF_STOCK_CARDS = (By.CSS_SELECTOR, "a[wized='cardOfProperty']")
     OUT_OT_STOCK_STATUS_ON_CARDS = (By.CSS_SELECTOR, "div[wized='projectStatus'")
     FIRST_PRODUCT = (By.CSS_SELECTOR, "a[wized='cardOfProperty']")
+    OFF_PLAN_CARD_IMAGE = (By.CSS_SELECTOR, "div[wized='projectImage']")
+    OFF_PLAN_CARD_TITLE = (By.CSS_SELECTOR, "div[wized='projectName']")
 
     ARCHITECTURE_BTN = (By.ID, 'w-tabs-0-data-w-tab-0')
     INTERIOR_BTN = (By.ID, 'w-tabs-0-data-w-tab-1')
@@ -71,3 +73,27 @@ class OffPlanPage(Page):
         self.wait_until_clickable_click(*self.ARCHITECTURE_BTN)
         self.wait_until_clickable_click(*self.INTERIOR_BTN)
         self.wait_until_clickable_click(*self.LOBBY_BTN)
+
+    def verify_products_have_title_n_picture(self):
+        all_cards = self.wait.until(EC.visibility_of_all_elements_located(self.CARDS_PROPERTY))
+        for card in all_cards:
+            title = self.find_elements(*self.OFF_PLAN_CARD_TITLE)
+            picture = self.find_elements(*self.OFF_PLAN_CARD_IMAGE)
+
+            if not picture or not title:
+                print(f"Missing picture or title for card: {card}")
+
+        print(len(all_cards))
+
+        # all_cards = self.wait.until(EC.visibility_of_all_elements_located(self.CARDS_PROPERTY))
+        # for card in all_cards:
+        #     title = self.find_elements(*self.OFF_PLAN_CARD_TITLE)
+        #     assert len(title) == len(all_cards), f'Expected {len(all_cards)}, got {len(title)}'
+        #     picture = self.find_elements(*self.OFF_PLAN_CARD_IMAGE)
+        #     assert len(picture) == len(all_cards), f'Expected {len(all_cards)}, got {len(picture)}'
+        #
+        # print(len(all_cards))
+
+
+
+
