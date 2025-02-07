@@ -1,7 +1,9 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 # from support.logger import logger
+
 
 
 
@@ -68,7 +70,7 @@ class Page:
         self.wait.until(
             EC.element_to_be_clickable(locator),
             message=f'Element by locator {locator} not clickable'
-        )
+        ).click()
 
     def wait_and_click(self, *locator):
         self.wait.until(
@@ -83,6 +85,18 @@ class Page:
         )
 
     def wait_for_all_visibility_elements_located(self, *locator):
+        self.wait.until(
+            EC.visibility_of_all_elements_located(locator),
+            message=f'Elements by locator {locator} did not appear'
+        )
+
+    def wait_for_visibility_of_element_located(self, *locator):
+        self.wait.until(
+            EC.visibility_of_all_elements_located(locator),
+            message=f'Elements by locator {locator} did not appear'
+        )
+
+    def wait_until_visible(self, *locator):
         self.wait.until(
             EC.visibility_of_all_elements_located(locator),
             message=f'Elements by locator {locator} did not appear'
@@ -109,3 +123,36 @@ class Page:
     def verify_partial_url(self, expected_partial_url):
         actual_url = self.driver.current_url
         assert expected_partial_url in actual_url, f'Expected {expected_partial_url} not in {actual_url}'
+
+    def clear_text(self, *locator):
+        self.driver.find_element(*locator).clear()
+
+    def presence_of_element_located(self, *locator):
+        self.wait.until(
+            EC.presence_of_element_located(locator),
+            message=f"Couldn't find the presence of element at '{locator}'")
+    def verify_attribute_value(self, expected_text, *locator):
+        actual_text = self.driver.find_element(*locator).get_attribute("value")
+        assert expected_text == actual_text, f"Expected {expected_text} but got {actual_text}"
+
+    def select_dropdown_value(self, value, *locator):
+        select_element = self.driver.find_element(*locator)
+        select = Select(select_element)
+        select.select_by_visible_text(value)
+
+    def get_dropdown_value(self, value, *locator):
+        select_element = self.driver.find_element(*locator)
+        select = Select(select_element)
+        selected_text = select.first_selected_option.text
+        assert value == selected_text, f"Expected {value} but got {selected_text}"
+
+    def checkbox_click(self, *locator):
+        checkbox_element = self.driver.find_element(*locator)
+        if checkbox_element.is_selected() != True:
+            checkbox_element.click()
+
+    def is_checkbox_selected(self, *locator):
+        checkbox_element = self.driver.find_element(*locator)
+        assert checkbox_element.is_selected() == True, f"Checkbox needs to selected!"
+
+
