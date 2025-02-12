@@ -31,3 +31,11 @@ Feature: Tests for Off-plan page
    When Click on “off plan” at the left side menu
    Then Verify the right off-plan page opens
    Then Verify each product on this page contains a title and picture visible
+
+ Scenario: User can open the off plan page and go through the pagination, 17
+   Given Open Reelly page
+   When Log in to the page
+   When Click on “off plan” at the left side menu
+   Then Verify the right off-plan page opens
+   When Go to the final page using the pagination button
+   When Go back to the first page using the pagination button

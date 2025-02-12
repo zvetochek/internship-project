@@ -41,3 +41,15 @@ def verify_visualiz_opts_clickable(context):
 @then('Verify each product on this page contains a title and picture visible')
 def verify_products_have_title_n_picture(context):
     context.app.off_plan_page.verify_products_have_title_n_picture()
+
+@when('Go to the final page using the pagination button')
+def paginate_through(context):
+    context.app.off_plan_page.goto_final_page_using_pagination_offplan()
+
+@when('Go back to the first page using the pagination button')
+def goback_to_first_page_using_pagination(context):
+    context.app.off_plan_page.goback_to_first_page_using_pagination()
+
+# @when('Go back to the first page using the pagination button')
+# def paginate_through(context):
+#     context.app.off_plan_page.paginate_through()

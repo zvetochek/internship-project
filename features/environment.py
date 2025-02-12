@@ -14,7 +14,12 @@ def browser_init(context, scenario_name):
     """
 
     ### GOOGLE CHROME ###
-    # driver_path = './chromedriver.exe'
+    driver_path = './chromedriver.exe'
+    service = Service(driver_path)
+    context.driver = webdriver.Chrome(service=service)
+
+    ### GOOGLE CHROME for Automatic driver setup ###
+    # driver_path = ChromeDriverManager().install()
     # service = Service(driver_path)
     # context.driver = webdriver.Chrome(service=service)
 
@@ -46,23 +51,23 @@ def browser_init(context, scenario_name):
 
     ## BROWSERSTACK ###
     ## Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings ##
-    bs_user = 'larisa_t3lePz'
-    bs_key = 'MNfpB7RR7gXKZXYPLsyp'
-    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-
-    options = Options()
-    bstack_options = {
-    # "os": "Windows",
-    # "osVersion" : "11",
+    # bs_user = 'larisa_t3lePz'
+    # bs_key = 'MNfpB7RR7gXKZXYPLsyp'
+    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    #
+    # options = Options()
+    # bstack_options = {
+    # # "os": "Windows",
+    # # "osVersion" : "11",
+    # # 'browserName': 'chrome',
+    # # }
+    #
+    # "platformName": "Android",
+    # "deviceName": "Samsung Galaxy S22 Ultra",
     # 'browserName': 'chrome',
+    # 'interactiveDebugging': True,
+    # 'sessionName': scenario_name
     # }
-
-    "platformName": "Android",
-    "deviceName": "Samsung Galaxy S22 Ultra",
-    'browserName': 'chrome',
-    'interactiveDebugging': True,
-    'sessionName': scenario_name
-    }
     #
     # # Mac
     # #     "os": "OS X",
@@ -73,8 +78,8 @@ def browser_init(context, scenario_name):
     #
     #  # Mac: "os": "OS X", "osVersion" : "ventura", 'browserName': 'chrome' OR 'safari', 'sessionName': scenario_name
     #
-    options.set_capability('bstack:options', bstack_options)
-    context.driver = webdriver.Remote(command_executor=url, options=options)
+    # options.set_capability('bstack:options', bstack_options)
+    # context.driver = webdriver.Remote(command_executor=url, options=options)
 
     ### MOBILE-EMULATION ###
     # mobile_emulation = {

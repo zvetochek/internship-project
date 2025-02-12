@@ -20,10 +20,14 @@ class OffPlanPage(Page):
     FIRST_PRODUCT = (By.CSS_SELECTOR, "a[wized='cardOfProperty']")
     OFF_PLAN_CARD_IMAGE = (By.CSS_SELECTOR, "div[wized='projectImage']")
     OFF_PLAN_CARD_TITLE = (By.CSS_SELECTOR, "div[wized='projectName']")
+    NEXT_PAGE_BTN_OFF_PLAN = (By.CSS_SELECTOR, "a[wized='nextPageProperties']")
+    PREVIOUS_PAGE_BTN_OFF_PLAN = (By.CSS_SELECTOR, "div[wized='previousPageProperties']")
+    TOTAL_PAGE = (By.CSS_SELECTOR, '[wized="totalPageProperties"]')
 
     ARCHITECTURE_BTN = (By.ID, 'w-tabs-0-data-w-tab-0')
     INTERIOR_BTN = (By.ID, 'w-tabs-0-data-w-tab-1')
     LOBBY_BTN = (By.ID, 'w-tabs-0-data-w-tab-2')
+
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -36,10 +40,10 @@ class OffPlanPage(Page):
         self.verify_url('https://soft.reelly.io/')
 
     def filter_products_by_price(self):
-        self.click(*self.FILTER_BTN)
+        self.wait_and_click(*self.FILTER_BTN)
         self.input_text("1200000", *self.FROM_BOX_PRICE)
         self.input_text("2000000", *self.TO_BOX_PRICE)
-        self.click(*self.APPLY_FILTER_BTN)
+        self.wait_and_click(*self.APPLY_FILTER_BTN)
 
     def verify_price_in_range(self):
         all_cards = self.wait.until(EC.visibility_of_all_elements_located(self.CARDS_PROPERTY))
@@ -93,6 +97,25 @@ class OffPlanPage(Page):
         #     assert len(picture) == len(all_cards), f'Expected {len(all_cards)}, got {len(picture)}'
         #
         # print(len(all_cards))
+
+    def goto_final_page_using_pagination_offplan(self):
+        sleep(5)
+        total_page = self.find_element(*self.TOTAL_PAGE).text
+        for page in range(1, int(total_page)):
+            #self.find_elements(*self.NEXT_PAGE_BTN_OFF_PLAN)
+            # sleep(1)
+            self.wait_and_click(*self.NEXT_PAGE_BTN_OFF_PLAN)
+            print(f"Current page: {page}") #Print each page number
+
+    def goback_to_first_page_using_pagination(self):
+        sleep(5)
+        total_page = self.find_element(*self.TOTAL_PAGE).text
+        for page in range(int(total_page), 0, -1):
+           # self.find_elements(*self.PREVIOUS_PAGE_BTN_OFF_PLAN)
+            self.wait_and_click(*self.PREVIOUS_PAGE_BTN_OFF_PLAN)
+            print(f"Current {page}") #Print each page number
+
+
 
 
 

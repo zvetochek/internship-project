@@ -14,8 +14,12 @@ class MainPage(Page):
     PROFILE_BTN_MOBILE = (By.CSS_SELECTOR, ".menu-img-agent-listing")
 
     def click_settings_option(self):
-        self.wait_and_click(*self.PROFILE_BTN_MOBILE)
-        # self.wait_until_clickable(*self.SETTINGS_BTN)
+        self.wait_and_click(*self.SETTINGS_BTN)
 
-    def click_main_menu_btn(self):
-        self.wait_and_click(*self.MAIN_MENU_BTN_MOBILE)
+
+    # def click_settings_option(self):
+    #     self.wait_and_click(*self.PROFILE_BTN_MOBILE)
+    #     # self.wait_until_clickable(*self.SETTINGS_BTN)
+
+    # def click_main_menu_btn(self):
+    #     self.wait_and_click(*self.MAIN_MENU_BTN_MOBILE)
