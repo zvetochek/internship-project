@@ -18,3 +18,7 @@ def switch_to_new_tab(context):
 @then('Verify the right tab opens')
 def verify_right_tab_opens(context):
     context.app.settings_page.verify_right_tab_opens()
+
+@when('Click on Edit profile option')
+def click_edit_profile_option(context):
+    context.app.settings_page.click_edit_profile_option()

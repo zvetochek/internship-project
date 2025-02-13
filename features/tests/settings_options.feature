@@ -35,3 +35,12 @@ Feature: Tests for Settings options
     When Click on “Connect the company”
     And Switch the new tab
     Then Verify the right tab opens
+
+  Scenario: User can go to settings and edit the personal information, 3
+    Given Open Reelly page
+    When Log in to the page
+    And Click on settings option
+    And Click on Edit profile option
+    When Enter test information in the input fields
+    Then Check the right information is present in the input fields
+    Then Check “Close” and “Save Changes” buttons are available and clickable
