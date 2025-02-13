@@ -39,3 +39,4 @@ Feature: Tests for Off-plan page
    Then Verify the right off-plan page opens
    When Go to the final page using the pagination button
    When Go back to the first page using the pagination button
+

@@ -44,3 +44,10 @@ Feature: Tests for Settings options
     When Enter test information in the input fields
     Then Check the right information is present in the input fields
     Then Check “Close” and “Save Changes” buttons are available and clickable
+
+  Scenario: User can change the language from the page, 4
+    Given Open Reelly page
+    When Log in to the page
+    And Click on settings option
+    And Change the language of the page to Russian. The option will be “RU” which is the list of the languages
+    Then Verify the language has changed

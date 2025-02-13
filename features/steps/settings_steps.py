@@ -22,3 +22,11 @@ def verify_right_tab_opens(context):
 @when('Click on Edit profile option')
 def click_edit_profile_option(context):
     context.app.settings_page.click_edit_profile_option()
+
+@when('Change the language of the page to Russian. The option will be “RU” which is the list of the languages')
+def change_language(context):
+    context.app.settings_page.change_language()
+
+@then('Verify the language has changed')
+def verify_language_changed(context):
+    context.app.settings_page.verify_language_changed()

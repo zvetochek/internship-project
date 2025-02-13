@@ -2,6 +2,7 @@ from pages.base_page import Page
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
+from selenium.webdriver.common.action_chains import ActionChains
 
 class SettingsPage(Page):
 
@@ -14,6 +15,10 @@ class SettingsPage(Page):
     EDIT_PROFILE_BTN = (By.CSS_SELECTOR, "[href*='profile-edit']")
     # EDIT_PROFILE_BTN = By.XPATH, "//div[contains(@class, 'setting-text') and text()='Edit profile']")
     # this locator works as well!
+    # CHANGE_LANGUAGE = (By.CSS_SELECTOR, "[class='wg-dd-1-togle-3 w-dropdown-toggle']")
+    LANGUAGE_SELECTOR = (By.ID, "w-dropdown-toggle-0")
+    RU_LANGUAGE = (By.ID, "w-dropdown-list-0")
+    RUSSIAN_HEADER = (By.CSS_SELECTOR, "div[class='div-block-33']")
 
 
     def click_subcr_and_payment_btn(self):
@@ -39,3 +44,31 @@ class SettingsPage(Page):
 
     def click_edit_profile_option(self):
         self.wait_and_click(*self.EDIT_PROFILE_BTN)
+
+    def change_language(self):
+        # self.wait_until_visible(*self.LANGUAGE_SELECTOR)
+        # actions = ActionChains(self.driver)
+        # language = self.find_element(*self.LANGUAGE_SELECTOR)
+        # # move to the element and click then perform the operation
+        # actions.move_to_element(language)
+        # element = self.find_element(*self.RU_LANGUAGE)
+        # actions.move_to_element(element)
+        # # actions.move_by_offset(0, 25)
+        # sleep(2)
+        # actions.click()
+        # actions.perform()
+
+        lang_button = self.find_element(*self.LANGUAGE_SELECTOR)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(lang_button).perform()
+        # sleep(2)
+        self.click(*self.RU_LANGUAGE)
+
+    def verify_language_changed(self):
+        actual_text = self.find_element(*self.RUSSIAN_HEADER).text
+        sleep(2)
+        expected_text = 'Главное меню'
+        assert expected_text == actual_text, f'Error: expected {expected_text}, is not {actual_text}'
+
+
+
