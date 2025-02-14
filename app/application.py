@@ -1,6 +1,7 @@
 from pages.base_page import Page
 # from pages.header import Header
 from pages.add_project_page import AddProjectPage
+from pages.community_page import CommunityPage
 from pages.edit_profile_page import EditProfilePage
 from pages.main_page import MainPage
 from pages.market_page import MarketPage
@@ -19,6 +20,7 @@ class Application:
 
         self.base_page = Page(driver)
         self.add_project_page = AddProjectPage(driver)
+        self.community_page = CommunityPage(driver)
         self.edit_profile_page = EditProfilePage(driver)
         self.main_page = MainPage(driver)
         self.market_page = MarketPage(driver)

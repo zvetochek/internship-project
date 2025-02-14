@@ -61,3 +61,11 @@ Feature: Tests for Settings options
     When Add some test information to the input fields
     Then Verify the right information is present in the input fields
     Then Verify “Send an application” button is available and clickable
+
+  Scenario: User can open the community page, 6
+    Given Open Reelly page
+    When Log in to the page
+    And Click on settings option
+    When Click on Community option
+    Then Verify the Community page opens
+    Then Verify “Contact support” button is available and clickable

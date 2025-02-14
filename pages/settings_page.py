@@ -22,6 +22,7 @@ class SettingsPage(Page):
     ADD_PROJECT_BTN = (By.XPATH, "//*[text()='Add a project']")
     # ADD_PROJECT_BTN = (By.CSS_SELECTOR, "[href*='add-a-project'].page-setting-block")
     # this locator works as well
+    COMMUNITY_BTN = (By.CSS_SELECTOR, "[href*='community'].page-setting-block")
 
     def click_subcr_and_payment_btn(self):
         # sleep(3)
@@ -77,3 +78,6 @@ class SettingsPage(Page):
 
     def verify_add_project_page_opens(self):
         self.verify_partial_url('add-a-project')
+
+    def click_community_btn(self):
+        self.wait_and_click(*self.COMMUNITY_BTN)

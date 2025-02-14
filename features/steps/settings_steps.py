@@ -39,4 +39,8 @@ def click_add_project_option(context):
 def verify_add_project_page_opens(context):
     context.app.settings_page.verify_add_project_page_opens()
 
+@when('Click on Community option')
+def click_community_btn(context):
+    context.app.settings_page.click_community_btn()
+
 
