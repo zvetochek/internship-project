@@ -51,3 +51,13 @@ Feature: Tests for Settings options
     And Click on settings option
     And Change the language of the page to Russian. The option will be “RU” which is the list of the languages
     Then Verify the language has changed
+
+  Scenario: User can add a project through the settings, 5
+    Given Open Reelly page
+    When Log in to the page
+    And Click on settings option
+    And Click on "Add a project" button
+    Then Verify the "Add a project" page opens
+    When Add some test information to the input fields
+    Then Verify the right information is present in the input fields
+    Then Verify “Send an application” button is available and clickable

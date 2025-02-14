@@ -30,3 +30,13 @@ def change_language(context):
 @then('Verify the language has changed')
 def verify_language_changed(context):
     context.app.settings_page.verify_language_changed()
+
+@when('Click on "Add a project" button')
+def click_add_project_option(context):
+    context.app.settings_page.click_add_project_option()
+
+@then('Verify the "Add a project" page opens')
+def verify_add_project_page_opens(context):
+    context.app.settings_page.verify_add_project_page_opens()
+
+

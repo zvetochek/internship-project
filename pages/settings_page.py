@@ -19,7 +19,9 @@ class SettingsPage(Page):
     LANGUAGE_SELECTOR = (By.ID, "w-dropdown-toggle-0")
     RU_LANGUAGE = (By.ID, "w-dropdown-list-0")
     RUSSIAN_HEADER = (By.CSS_SELECTOR, "div[class='div-block-33']")
-
+    ADD_PROJECT_BTN = (By.XPATH, "//*[text()='Add a project']")
+    # ADD_PROJECT_BTN = (By.CSS_SELECTOR, "[href*='add-a-project'].page-setting-block")
+    # this locator works as well
 
     def click_subcr_and_payment_btn(self):
         # sleep(3)
@@ -70,5 +72,8 @@ class SettingsPage(Page):
         expected_text = 'Главное меню'
         assert expected_text == actual_text, f'Error: expected {expected_text}, is not {actual_text}'
 
+    def click_add_project_option(self):
+        self.wait_and_click(*self.ADD_PROJECT_BTN)
 
-
+    def verify_add_project_page_opens(self):
+        self.verify_partial_url('add-a-project')
