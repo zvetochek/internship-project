@@ -69,3 +69,12 @@ Feature: Tests for Settings options
     When Click on Community option
     Then Verify the Community page opens
     Then Verify “Contact support” button is available and clickable
+
+  Scenario: User can open the 'Contact us' page, 7
+    Given Open Reelly page
+    When Log in to the page
+    And Click on settings option
+    And Click on "Contact us" option
+    Then Verify the "Contact us" page opens
+    Then Verify there are at least 4 social media icons
+    Then Verify “Connect the company” button is available and clickable

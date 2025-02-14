@@ -43,4 +43,6 @@ def verify_add_project_page_opens(context):
 def click_community_btn(context):
     context.app.settings_page.click_community_btn()
 
-
+@when('Click on "Contact us" option')
+def click_contact_us_option(context):
+    context.app.settings_page.click_contact_us_option()

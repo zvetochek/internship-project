@@ -23,7 +23,7 @@ class SettingsPage(Page):
     # ADD_PROJECT_BTN = (By.CSS_SELECTOR, "[href*='add-a-project'].page-setting-block")
     # this locator works as well
     COMMUNITY_BTN = (By.CSS_SELECTOR, "[href*='community'].page-setting-block")
-
+    CONTACT_US_BTN = (By.CSS_SELECTOR, "[href*='/contact-us'].page-setting-block")
     def click_subcr_and_payment_btn(self):
         # sleep(3)
         self.click(*self.SUBSC_AND_PAYMENT_BTN)
@@ -81,3 +81,6 @@ class SettingsPage(Page):
 
     def click_community_btn(self):
         self.wait_and_click(*self.COMMUNITY_BTN)
+
+    def click_contact_us_option(self):
+        self.wait_and_click(*self.CONTACT_US_BTN)
