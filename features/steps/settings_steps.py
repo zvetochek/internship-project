@@ -46,3 +46,7 @@ def click_community_btn(context):
 @when('Click on "Contact us" option')
 def click_contact_us_option(context):
     context.app.settings_page.click_contact_us_option()
+
+@when('Click on User Guide option')
+def click_user_guide_option(context):
+    context.app.settings_page.click_user_guide_option()

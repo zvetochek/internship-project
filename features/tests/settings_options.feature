@@ -70,7 +70,7 @@ Feature: Tests for Settings options
     Then Verify the Community page opens
     Then Verify “Contact support” button is available and clickable
 
-  Scenario: User can open the 'Contact us' page, 7
+  Scenario: User can open the Contact us page, 7
     Given Open Reelly page
     When Log in to the page
     And Click on settings option
@@ -78,3 +78,11 @@ Feature: Tests for Settings options
     Then Verify the "Contact us" page opens
     Then Verify there are at least 4 social media icons
     Then Verify “Connect the company” button is available and clickable
+
+  Scenario: User can open User guide page, 8
+    Given Open Reelly page
+    When Log in to the page
+    And Click on settings option
+    And Click on User Guide option
+    Then Verify the User Guide page opens
+    Then Verify all lesson videos contain titles

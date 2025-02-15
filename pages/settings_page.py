@@ -24,6 +24,9 @@ class SettingsPage(Page):
     # this locator works as well
     COMMUNITY_BTN = (By.CSS_SELECTOR, "[href*='community'].page-setting-block")
     CONTACT_US_BTN = (By.CSS_SELECTOR, "[href*='/contact-us'].page-setting-block")
+    USER_GUIDE_BTN = (By.CSS_SELECTOR, "a[href*='/user-guide'].page-setting-block")
+
+
     def click_subcr_and_payment_btn(self):
         # sleep(3)
         self.click(*self.SUBSC_AND_PAYMENT_BTN)
@@ -84,3 +87,6 @@ class SettingsPage(Page):
 
     def click_contact_us_option(self):
         self.wait_and_click(*self.CONTACT_US_BTN)
+
+    def click_user_guide_option(self):
+        self.wait_and_click(*self.USER_GUIDE_BTN)

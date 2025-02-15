@@ -56,6 +56,13 @@ class Page:
         self.driver.switch_to.window(window_id)
         print(f'Switched to window => {window_id}')
 
+    def switch_frames(self, *locator):
+        frame1 = self.find_element(*locator)
+        self.driver.switch_to.frame(frame1)
+
+    def reset_frame(self):
+        self.driver.switch_to.default_content()
+
     def close(self):
         self.driver.close()
 
