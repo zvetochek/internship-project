@@ -1,7 +1,5 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
 from behave import given, when, then
-from time import sleep
+
 
 @when('Click on the verification option')
 def click_verification_option(context):
@@ -43,10 +41,17 @@ def verify_add_project_page_opens(context):
 def click_community_btn(context):
     context.app.settings_page.click_community_btn()
 
+
 @when('Click on "Contact us" option')
 def click_contact_us_option(context):
     context.app.settings_page.click_contact_us_option()
 
+
 @when('Click on User Guide option')
 def click_user_guide_option(context):
     context.app.settings_page.click_user_guide_option()
+
+
+@when('Click on Change password option')
+def click_change_pw_option(context):
+    context.app.settings_page.click_change_pw_option()

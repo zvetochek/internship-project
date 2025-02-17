@@ -86,3 +86,12 @@ Feature: Tests for Settings options
     And Click on User Guide option
     Then Verify the User Guide page opens
     Then Verify all lesson videos contain titles
+
+  Scenario: User can open change password page, 9
+    Given Open Reelly page
+    When Log in to the page
+    And Click on settings option
+    When Click on Change password option
+    Then Verify Change password page opens
+    When Add some test password to the input fields
+    Then Verify the “Change password” button is available, but don’t click on it

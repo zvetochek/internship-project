@@ -25,6 +25,7 @@ class SettingsPage(Page):
     COMMUNITY_BTN = (By.CSS_SELECTOR, "[href*='community'].page-setting-block")
     CONTACT_US_BTN = (By.CSS_SELECTOR, "[href*='/contact-us'].page-setting-block")
     USER_GUIDE_BTN = (By.CSS_SELECTOR, "a[href*='/user-guide'].page-setting-block")
+    CHANGE_PW_BTN = (By.CSS_SELECTOR, "a[href*='/set-new-password']")
 
 
     def click_subcr_and_payment_btn(self):
@@ -90,3 +91,6 @@ class SettingsPage(Page):
 
     def click_user_guide_option(self):
         self.wait_and_click(*self.USER_GUIDE_BTN)
+
+    def click_change_pw_option(self):
+        self.wait_and_click(*self.CHANGE_PW_BTN)
