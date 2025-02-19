@@ -20,4 +20,22 @@ def filter_products_by_price(context):
 def verify_price_in_range(context):
     context.app.secondary_page.verify_price_in_range()
 
+@when('Go to the final secondary page using the pagination button')
+def go_to_final_secondary_page(context):
+    context.app.secondary_page.go_to_final_secondary_page()
 
+@when('Go back to the first secondary page using the pagination button')
+def go_back_to_first_page(context):
+    context.app.secondary_page.go_back_to_first_page()
+
+@when('Filter the products by "want to sell"')
+def filter_products_by_want_to_sell(context):
+    context.app.secondary_page.filter_products_by_want_to_sell()
+
+@when('Click on Apply Filter')
+def click_apply_filter_btn(context):
+    context.app.secondary_page.click_apply_filter_btn()
+
+@then('Verify all cards have "for sale" tag')
+def verify_all_cards_have_for_sale_tag(context):
+    context.app.secondary_page.verify_all_cards_have_for_sale_tag()
