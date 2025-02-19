@@ -55,3 +55,19 @@ def click_user_guide_option(context):
 @when('Click on Change password option')
 def click_change_pw_option(context):
     context.app.settings_page.click_change_pw_option()
+
+@when('Click on support option')
+def click_support_option(context):
+    context.app.settings_page.click_support_option()
+
+@when('Switch to the new tab')
+def switch_to_support_window(context):
+    context.app.settings_page.switch_to_support_window()
+
+@when('Click on news option')
+def click_on_news_option(context):
+    context.app.settings_page.click_on_news_option()
+
+@then('Verify the news page opens')
+def verify_news_page_opened(context):
+    context.app.settings_page.verify_news_page_opened()

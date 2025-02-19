@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 from selenium.webdriver.common.action_chains import ActionChains
 
+
 class SettingsPage(Page):
 
     SUBSC_AND_PAYMENT_BTN = (By.XPATH, "//div[text()='Subscription & payments']")
@@ -26,6 +27,9 @@ class SettingsPage(Page):
     CONTACT_US_BTN = (By.CSS_SELECTOR, "[href*='/contact-us'].page-setting-block")
     USER_GUIDE_BTN = (By.CSS_SELECTOR, "a[href*='/user-guide'].page-setting-block")
     CHANGE_PW_BTN = (By.CSS_SELECTOR, "a[href*='/set-new-password']")
+    # SUPPORT_BTN = (By.CSS_SELECTOR, "[href*='https://api.whatsapp.com']")
+    SUPPORT_BTN = (By.XPATH, "//div[contains(@class, 'setting-text') and text()='Support']")
+    NEWS_BTN = (By.XPATH, "//div[contains(@class, 'setting-text') and text()='News']")
 
 
     def click_subcr_and_payment_btn(self):
@@ -94,3 +98,15 @@ class SettingsPage(Page):
 
     def click_change_pw_option(self):
         self.wait_and_click(*self.CHANGE_PW_BTN)
+
+    def click_support_option(self):
+        self.wait_and_click(*self.SUPPORT_BTN)
+
+    def switch_to_support_window(self):
+        self.switch_to_new_window()
+
+    def click_on_news_option(self):
+        self.wait_until_clickable_click(*self.NEWS_BTN)
+
+    def verify_news_page_opened(self):
+        self.verify_partial_url('t.me')

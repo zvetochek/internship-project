@@ -95,3 +95,14 @@ Feature: Tests for Settings options
     Then Verify Change password page opens
     When Add some test password to the input fields
     Then Verify the “Change password” button is available, but don’t click on it
+
+  Scenario: User can access Whatsapp and Telegram communities, 11
+    Given Open Reelly page
+    When Log in to the page
+    And Click on settings option
+    And Click on support option
+    And Switch to the new tab
+    Then Verify the right page support opens
+    When Go back
+    When Click on news option
+    Then Verify the news page opens

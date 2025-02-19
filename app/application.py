@@ -14,6 +14,7 @@ from pages.secondary_page import SecondaryPage
 from pages.settings_page import SettingsPage
 from pages.sign_in_page import SignInPage
 from pages.subscrip_paym_page import SubscrPaymentPage
+from pages.support_page import SupportPage
 from pages.user_guide_page import UserGuidePage
 from pages.verification_page import VerificationPage
 
@@ -36,6 +37,10 @@ class Application:
         self.sign_in_page = SignInPage(driver)
         # self.header = Header(driver)
         self.subscrip_paym_page = SubscrPaymentPage(driver)
+        self.support_page = SupportPage(driver)
         self.user_guide_page = UserGuidePage(driver)
         self.verification_page = VerificationPage(driver)
         # self.search_results_page = SearchResultsPage(driver)
+
+        ## Lana's video how to activate the New License for PyCharm:
+        ## https://www.youtube.com/embed/iINprFKknQA
