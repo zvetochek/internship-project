@@ -30,6 +30,7 @@ class SettingsPage(Page):
     # SUPPORT_BTN = (By.CSS_SELECTOR, "[href*='https://api.whatsapp.com']")
     SUPPORT_BTN = (By.XPATH, "//div[contains(@class, 'setting-text') and text()='Support']")
     NEWS_BTN = (By.XPATH, "//div[contains(@class, 'setting-text') and text()='News']")
+    SETTINGS_OPTIONS = (By.CSS_SELECTOR, "a.page-setting-block")
 
 
     def click_subcr_and_payment_btn(self):
@@ -110,3 +111,11 @@ class SettingsPage(Page):
 
     def verify_news_page_opened(self):
         self.verify_partial_url('t.me')
+
+    def verify_settings_options(self):
+        settings_options = self.find_elements(*self.SETTINGS_OPTIONS)
+        assert len(settings_options) == 12, f'Expected 12 settings options, got {len(settings_options)}'
+
+        # def verify_settings_options(self, no_of_options):
+        #     setting_options = self.find_elements(*self.SETTINGS_OPTIONS)
+        #     assert str(len(setting_options)) == no_of_options, f"Should have {no_of_options} options under settings"

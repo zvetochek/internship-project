@@ -106,3 +106,9 @@ Feature: Tests for Settings options
     When Go back
     When Click on news option
     Then Verify the news page opens
+
+  Scenario: User can go to settings and see the right number of UI elements, 12
+    Given Open Reelly page
+    When Log in to the page
+    And Click on settings option
+    Then Verify there are 12 options for the settings

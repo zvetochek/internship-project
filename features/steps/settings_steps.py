@@ -71,3 +71,12 @@ def click_on_news_option(context):
 @then('Verify the news page opens')
 def verify_news_page_opened(context):
     context.app.settings_page.verify_news_page_opened()
+
+
+@then('Verify there are 12 options for the settings')
+def verify_settings_options(context):
+    context.app.settings_page.verify_settings_options()
+
+# @then("Verify there are {no_of_options} options for the settings.")
+# def verify_settings_options(context, no_of_options):
+#     context.app.settings_page.verify_settings_options(no_of_options)
