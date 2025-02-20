@@ -27,3 +27,13 @@ Feature: Tests for Secondary page
     And Filter the products by "want to sell"
     And Click on Apply Filter
     Then Verify all cards have "for sale" tag
+
+  Scenario: User can filter the Secondary deals by 'want to buy' option, 15
+    Given Open Reelly page
+    When Log in to the page
+    When Click on “Secondary” option at the left side menu
+    Then Verify the secondary page opens
+    When Click on Filters
+    And Filter the products by "want to buy"
+    And Click on Apply Filter
+    Then Verify all cards have "want to buy" tag

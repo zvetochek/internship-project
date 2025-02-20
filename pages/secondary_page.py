@@ -23,9 +23,10 @@ class SecondaryPage(Page):
     WANT_TO_SELL_BTN = (By.CSS_SELECTOR, "div[wized='ListingTypeSell']")
     APPLY_FILTER_BTN = (By.CSS_SELECTOR, "a[wized='applyFilterButtonMLS']")
     FOR_SALE_TAG = (By.CSS_SELECTOR, "div[class='for-sale-tag']")
-    LISTING_SALE_CARDS = (By.CSS_SELECTOR, "div[wized='listingCardMLS']")
-
-
+    # LISTING_SALE_CARDS = (By.CSS_SELECTOR, "div[wized='listingCardMLS']")
+    WANT_TO_BUY_BTN = (By.XPATH, "//div[contains(@class, 'tag-text-filters') and text()='Want to buy']")
+    LISTING_CARDS_WANT_TO_BUY = (By.CSS_SELECTOR, "div[wized='listingCardMLS']")
+    WANT_TO_BUY_TAG = (By.CSS_SELECTOR, "div.for-sale-tag")
 
     def click_secondary_menu(self):
         sleep(4)
@@ -83,9 +84,17 @@ class SecondaryPage(Page):
     #     for_sale_cards = self.find_elements(*self.LISTING_SALE_CARDS)
     #     for_sale_tags = self.find_elements(*self.FOR_SALE_TAG)
     #     assert len(for_sale_tags) == len(for_sale_cards), f"Expected {len(for_sale_cards)}, got {len(for_sale_tags)}"
-    #
+
     def verify_all_cards_have_for_sale_tag(self):
         all_cards = self.wait.until(EC.visibility_of_all_elements_located(self.LISTING_CARDS))
         for card in all_cards:
             tag = card.find_element(*self.FOR_SALE_TAG).text
             assert 'for sale' in tag.lower(), f"Tag does not contain 'for sale' in card: {card}"
+
+    def filter_products_by_want_to_buy(self):
+        self.wait_and_click(*self.WANT_TO_BUY_BTN)
+
+    def verify_want_to_buy_tag(self):
+        listing_cards = self.find_elements(*self.LISTING_CARDS_WANT_TO_BUY)
+        want_to_buy_tags = self.find_elements(*self.WANT_TO_BUY_TAG)
+        assert len(want_to_buy_tags) == len(listing_cards), f"Expected {len(listing_cards)}, got {len(want_to_buy_tags)}"
