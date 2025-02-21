@@ -15,6 +15,8 @@ class MarketPage(Page):
     LICENSE_TAG = (By.CSS_SELECTOR, "div[class='license-block']")
     ADD_COMPANY_BTN = (By.CSS_SELECTOR, "a[class='add-company-button w-inline-block']")
     PUBLISH_MY_COMPANY_BTN = (By.CSS_SELECTOR, "a[class='publish-button w-button']")
+    VIEW_PAGE_TEMPLATE_BTN = (By.CSS_SELECTOR, "[class='publish-button color w-button']")
+    SEND_MY_CV_BTN = (By.CSS_SELECTOR,"[class='button-agency w-button']")
 
     def click_market_menu(self):
         self.click(*self.MARKET_BTN)
@@ -67,3 +69,9 @@ class MarketPage(Page):
     def verify_publish_my_company_btn_available(self):
         # self.wait_for_visibility_of_element_located(*self.PUBLISH_MY_COMPANY_BTN)
         self.wait_until_visible(*self.PUBLISH_MY_COMPANY_BTN)
+
+    def click_btn_view_page_template(self):
+        self.wait_and_click(*self.VIEW_PAGE_TEMPLATE_BTN)
+
+    def verify_send_my_cv_btn_avlbl(self):
+        self.presence_of_element_located(*self.SEND_MY_CV_BTN)

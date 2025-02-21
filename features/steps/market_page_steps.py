@@ -36,8 +36,13 @@ def verify_add_company_page_opened(context):
 def verify_publish_my_company_btn_available(context):
     context.app.market_page.verify_publish_my_company_btn_available()
 
+@when('Scroll down and click on the button “View Page Template”')
+def click_btn_view_page_template(context):
+    context.app.market_page.click_btn_view_page_template()
 
-
+@then('Verify the button “Send my CV” button is available')
+def verify_send_my_cv_btn_avlbl(context):
+    context.app.market_page.verify_send_my_cv_btn_avlbl()
 
 
 
