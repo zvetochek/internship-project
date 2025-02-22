@@ -46,3 +46,11 @@ Feature: Tests for Off-plan page
    When Click on “off plan” at the left side menu
    Then Verify the right off-plan page opens
    Then Verify a sales status tag is present on all cards
+
+ Scenario: User can filter by Announced, 28
+   Given Open Reelly page
+   When Log in to the page
+   When Click on “off plan” at the left side menu
+   Then Verify the right off-plan page opens
+   When Filter by sale status of “Announced”
+   Then Verify each product contains the Announced

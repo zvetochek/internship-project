@@ -123,7 +123,17 @@ class OffPlanPage(Page):
             if not sales_tag:
                 print(f"Missing {sales_tag} for card: {card}")
 
+    def filter_sales_status_by_announced(self):
+        dd = self.find_element(*self.SALE_STATUS_DROPDOWN)
+        select = Select(dd)
+        select.select_by_value('Announced')
+        sleep(3)
 
+    def verify_announced_tag(self):
+        all_cards = self.find_elements(*self.OUT_OF_STOCK_CARDS)
+        for card in all_cards:
+            status = card.find_element(*self.OUT_OT_STOCK_STATUS_ON_CARDS)
+            assert status.text == "Announced", f"Tag is not 'Announced'."
 
 
 

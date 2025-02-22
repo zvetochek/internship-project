@@ -57,3 +57,11 @@ def goback_to_first_page_using_pagination(context):
 @then('Verify a sales status tag is present on all cards')
 def verify_sales_status_tag(context):
     context.app.off_plan_page.verify_sales_status_tag()
+
+@when('Filter by sale status of “Announced”')
+def filter_sales_status_by_announced(context):
+    context.app.off_plan_page.filter_sales_status_by_announced()
+
+@then('Verify each product contains the Announced')
+def verify_announced_tag(context):
+    context.app.off_plan_page.verify_announced_tag()
