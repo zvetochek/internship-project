@@ -53,3 +53,7 @@ def goback_to_first_page_using_pagination(context):
 # @when('Go back to the first page using the pagination button')
 # def paginate_through(context):
 #     context.app.off_plan_page.paginate_through()
+
+@then('Verify a sales status tag is present on all cards')
+def verify_sales_status_tag(context):
+    context.app.off_plan_page.verify_sales_status_tag()

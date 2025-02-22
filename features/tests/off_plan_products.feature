@@ -40,3 +40,9 @@ Feature: Tests for Off-plan page
    When Go to the final page using the pagination button
    When Go back to the first page using the pagination button
 
+ Scenario: User can see a Sale status tag on off plan page on all cards, 27
+   Given Open Reelly page
+   When Log in to the page
+   When Click on “off plan” at the left side menu
+   Then Verify the right off-plan page opens
+   Then Verify a sales status tag is present on all cards

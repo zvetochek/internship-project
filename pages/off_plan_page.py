@@ -23,7 +23,7 @@ class OffPlanPage(Page):
     NEXT_PAGE_BTN_OFF_PLAN = (By.CSS_SELECTOR, "a[wized='nextPageProperties']")
     PREVIOUS_PAGE_BTN_OFF_PLAN = (By.CSS_SELECTOR, "div[wized='previousPageProperties']")
     TOTAL_PAGE = (By.CSS_SELECTOR, '[wized="totalPageProperties"]')
-
+    SALES_TAG_OFF_PLAN = (By.CSS_SELECTOR, "div[class='commision_box']")
     ARCHITECTURE_BTN = (By.ID, 'w-tabs-0-data-w-tab-0')
     INTERIOR_BTN = (By.ID, 'w-tabs-0-data-w-tab-1')
     LOBBY_BTN = (By.ID, 'w-tabs-0-data-w-tab-2')
@@ -114,6 +114,14 @@ class OffPlanPage(Page):
            # self.find_elements(*self.PREVIOUS_PAGE_BTN_OFF_PLAN)
             self.wait_and_click(*self.PREVIOUS_PAGE_BTN_OFF_PLAN)
             print(f"Current {page}") #Print each page number
+
+    def verify_sales_status_tag(self):
+        all_cards = self.wait.until(EC.visibility_of_all_elements_located(self.CARDS_PROPERTY))
+        for card in all_cards:
+            sales_tag = self.find_elements(*self.SALES_TAG_OFF_PLAN)
+
+            if not sales_tag:
+                print(f"Missing {sales_tag} for card: {card}")
 
 
 
